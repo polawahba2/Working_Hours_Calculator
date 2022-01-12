@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:work_time_calculator/Compounent/Constants.dart';
 import 'package:work_time_calculator/Cubit/Cubit.dart';
 import 'package:work_time_calculator/Cubit/States.dart';
-import 'package:work_time_calculator/Screens/CheckInOut/CheckInOut.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -16,7 +15,7 @@ class HomeScreen extends StatelessWidget {
         return DefaultTabController(
           length: 2,
           child: Scaffold(
-            backgroundColor: Colors.blue[100],
+            backgroundColor: kBackGroundColor,
             appBar: AppBar(
               title: Text(
                 myCubit.appBarTitle[myCubit.appBarIndex],
@@ -53,6 +52,32 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             body: myCubit.screenBody[myCubit.appBarIndex],
+            // floatingActionButton: Container(
+            //   decoration: BoxDecoration(
+            //     color: Colors.blue,
+            //     borderRadius: BorderRadius.circular(20.0),
+            //   ),
+            //   child: FittedBox(
+            //     child: RawMaterialButton(
+            //       onPressed: () {},
+            //       shape: CircleBorder(),
+            //       child: Row(
+            //         children: [
+            //           Text(
+            //             'Add Manually',
+            //             style: TextStyle(
+            //               color: Colors.white,
+            //             ),
+            //           ),
+            //           Icon(
+            //             Icons.add_alarm,
+            //             color: Colors.white,
+            //           ),
+            //         ],
+            //       ),
+            //     ),
+            //   ),
+            // ),
           ),
         );
       },

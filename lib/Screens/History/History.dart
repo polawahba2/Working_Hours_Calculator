@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:buildcondition/buildcondition.dart';
-import 'package:work_time_calculator/Constants/Constants.dart';
+import 'package:work_time_calculator/Compounent/Constants.dart';
 import 'package:work_time_calculator/Cubit/Cubit.dart';
 import 'package:work_time_calculator/Cubit/States.dart';
 
@@ -38,6 +37,13 @@ class History extends StatelessWidget {
                             children: [
                               Expanded(
                                 child: Text(
+                                  'Num',
+                                  style: titleStyle(),
+                                ),
+                                flex: 1,
+                              ),
+                              Expanded(
+                                child: Text(
                                   'From',
                                   style: titleStyle(),
                                 ),
@@ -46,13 +52,6 @@ class History extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   'To',
-                                  style: titleStyle(),
-                                ),
-                                flex: 1,
-                              ),
-                              Expanded(
-                                child: Text(
-                                  'OverTime',
                                   style: titleStyle(),
                                 ),
                                 flex: 1,
@@ -76,7 +75,7 @@ class History extends StatelessWidget {
                         },
                         separatorBuilder: (context, index) => Container(
                           height: 1,
-                          color: Colors.blue[200],
+                          // color: Colors.blue[200],
                         ),
                         itemCount: times.length,
                       ),
@@ -106,29 +105,34 @@ Widget buildItem(var size, var index, context) {
       AppCubit.getCubit(context).deleteFromDataBase(times[index]['id']);
     },
     key: UniqueKey(),
-    child: Padding(
-      padding: const EdgeInsets.only(
-        top: 14.0,
-        right: 5.0,
-      ),
-      child: SizedBox(
-        width: size.width,
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 8.0,
-            bottom: 8.0,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('${times[index][startTime]}'),
-              Text('${times[index][endTime]}'),
-              Text('${times[index][overTime]}'),
-              Text('${times[index][date]}'),
-            ],
+    child: InkWell(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          top: 14.0,
+          right: 5.0,
+        ),
+        child: SizedBox(
+          width: size.width,
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 8.0,
+              bottom: 8.0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(index.toString()),
+                Text('${times[index][startTime]}'),
+                Text('${times[index][endTime]}'),
+                Text('${times[index][date]}'),
+              ],
+            ),
           ),
         ),
       ),
+      onTap: () {},
+      onLongPress: () {},
+      splashColor: Colors.blue[700],
     ),
   );
 }

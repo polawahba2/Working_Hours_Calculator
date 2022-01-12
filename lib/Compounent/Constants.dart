@@ -5,8 +5,9 @@ String tableName = 'myTable';
 String startTime = 'startTime';
 String endTime = 'endTime';
 String date = 'date';
-String overTime = 'overTime';
 
+
+var kBackGroundColor = Colors.blue[100];
 TextStyle titleStyle() => TextStyle(
       color: Colors.purple[900],
       fontWeight: FontWeight.w700,

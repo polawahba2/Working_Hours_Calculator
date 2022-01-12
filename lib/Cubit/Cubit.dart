@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:work_time_calculator/Constants/Constants.dart';
+import 'package:work_time_calculator/Compounent/Constants.dart';
 import 'package:work_time_calculator/Cubit/States.dart';
 import 'package:work_time_calculator/Screens/CheckInOut/CheckInOut.dart';
 import 'package:work_time_calculator/Screens/History/History.dart';
@@ -38,21 +38,6 @@ class AppCubit extends Cubit<states> {
     }
   }
 
-  int calculateOverTimeInMin(var startTime, var endTime) {
-    var format = DateFormat("HH:mm");
-    var start = format.parse(startTime);
-    var end = format.parse(endTime);
-    if (start.isAfter(end)) {
-      return ((start.difference(end).inMinutes) - 480) < 0
-          ? 0
-          : ((start.difference(end).inMinutes) - 480);
-    } else {
-      return ((end.difference(start).inMinutes) - 480) < 0
-          ? 0
-          : ((end.difference(start).inMinutes) - 480);
-    }
-  }
-
   var myDB;
 
   void createDB() async {
@@ -61,7 +46,7 @@ class AppCubit extends Cubit<states> {
       print('creating database');
       database
           .execute(
-              'CREATE TABLE $tableName (id INTEGER PRIMARY KEY, $startTime TEXT, $endTime TEXT,$date TEXT,$overTime TEXT)')
+              'CREATE TABLE $tableName (id INTEGER PRIMARY KEY, $startTime TEXT, $endTime TEXT,$date TEXT)')
           .then((value) {
         print('table created');
         emit(CreateDataBaseState());
@@ -89,12 +74,11 @@ class AppCubit extends Cubit<states> {
     required var startTimee,
     required var endTimee,
     required var datee,
-    required var overTimee,
   }) async {
     myDB.transaction((txn) async {
       txn
           .rawInsert(
-              'INSERT INTO "$tableName" ("$startTime","$endTime","$date","$overTime") VALUES("$startTimee","$endTimee","$datee","$overTimee")')
+              'INSERT INTO "$tableName" ("$startTime","$endTime","$date") VALUES("$startTimee","$endTimee","$datee")')
           .then((value) {
         print('row number $value inserted Successfully');
         readFromDB(myDB);
