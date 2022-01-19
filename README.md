@@ -1,16 +1,7 @@
 # work_time_calculator
 
-A new Flutter project.
+![WorkTimeCalc 1](https://user-images.githubusercontent.com/58266158/150205354-ead9ddbd-4ec5-444d-bb5e-8405d80f4f07.jpeg)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![WorkTimeCalc 2](https://user-images.githubusercontent.com/58266158/150205366-a919c36f-5258-4a5b-ac1e-f7c78ac8df4e.jpeg)
